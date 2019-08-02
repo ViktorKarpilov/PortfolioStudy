@@ -1,0 +1,21 @@
+﻿@model PortfolioAplication.Models.Work
+@{
+    ViewBag.Title = "Добавление роботы";
+}
+<form asp-action="PostWork" asp-controller="home">
+    <div class="form-group">
+        <label asp-for="Number" class="control-label">Номер</label>
+        <input type="text" asp-for="Number" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Url" class="control-label">Юрл</label>
+        <input type="text" asp-for="Url" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Описание</label>
+        <input type="number" asp-for="Description" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Send" class="btn btn-default" />
+    </div>
+</form>

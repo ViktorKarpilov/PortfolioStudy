@@ -1,0 +1,12 @@
+﻿@model IEnumerable<PortfolioAplication.Models.Work>
+@{
+    ViewBag.Title = "All works";
+}
+<a asp-action="Create">Add a model</a>
+<table class="table">
+    <tr><td>Number</td><td>Description</td><td>Url</td></tr>
+    @foreach (var item in Model)
+    {
+        <tr><td>@item.Number</td><td>@item.Description</td><td>@item.Url</td></tr>
+    }
+</table>
