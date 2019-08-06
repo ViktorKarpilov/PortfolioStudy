@@ -38,6 +38,8 @@ namespace PortfolioAplication
             // добавляем контекст MobileContext в качестве сервиса в приложение
             services.AddDbContext<WorkContext>(options =>
                 options.UseSqlServer(connection));
+          
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

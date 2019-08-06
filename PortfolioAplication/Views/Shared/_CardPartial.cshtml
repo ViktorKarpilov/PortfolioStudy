@@ -1,0 +1,12 @@
+﻿@model PortfolioAplication.Models.Work
+
+    <div class="card" style="width: 18rem;">
+        <img src=@Model.Photo class="card-img-top" alt="work image">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">@if (Model.Description.Length > 30) { @Model.Description.Substring(30); } else { @Model.Description; }</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+
+

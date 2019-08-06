@@ -16,8 +16,4 @@
     <Folder Include="Context\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="wwwroot\css\Index.css" />
-  </ItemGroup>
-
 </Project>

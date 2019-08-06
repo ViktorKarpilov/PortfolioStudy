@@ -13,7 +13,6 @@ namespace PortfolioAplication.Models
 
         [Key]
         public int Id { get; set; }
-
         public int Number { get; set; }
         //[Required]
         [DataType(DataType.Url)]
@@ -21,7 +20,26 @@ namespace PortfolioAplication.Models
         //[Required]
         [DataType(DataType.Text)]
         public string Description { get; set; }
-        public PhotoCollection Galery;
+        //public Dictionary<string, string> PhotoCollection { get; set; }
+        [DataType(DataType.Text)]
+        public string Photo { get; set; }
+
+        public Work(int Number)
+        {
+            this.Number = Number;
+        }
+        public Work(int Number,string Url) : this(Number)
+        {
+            this.Url = Url;
+        }
+        public Work(int Number,string Url,string Description) : this(Number, Url)
+        {
+            this.Description = Description;
+        }
+        public Work(int Number, string Url, string Description,string PhotoCollection) : this(Number, Url,Description)
+        {
+            this.Photo = PhotoCollection;
+        }
     }
     
 

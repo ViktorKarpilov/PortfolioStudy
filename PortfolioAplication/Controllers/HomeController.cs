@@ -1,27 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using PortfolioAplication.Models;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using PortfolioAplication.Models;
-using PortfolioAplication.Models;
+
 
 namespace PortfolioAplication.Controllers
 {
     public class HomeController : Controller
     {
 
-        private WorkContext db;
-        public HomeController(WorkContext context)
+        private readonly WorkContext context;
+
+        public HomeController(WorkContext workContext)
         {
-            db = context;
+            context = workContext;
         }
         [Route("[controller]/test")]
         public IActionResult Index()
         {
-            
-            return View(db.Works.ToArray());
+
+            return View(context.Works.ToList());
         }
 
         public IActionResult CreateWork()
@@ -31,13 +29,13 @@ namespace PortfolioAplication.Controllers
 
         public IActionResult Works()
         {
-            return View(db.Works.ToList());
+            return View(context.Works.ToList());
         }
         [HttpPost]
         public IActionResult PostWork(Work work)
         {
-            db.Works.AddAsync(work);
-            db.SaveChangesAsync();
+            context.Works.AddAsync(work);
+            context.SaveChangesAsync();
             return RedirectToActionPermanent("Works");
         }
 
