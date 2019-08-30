@@ -8,10 +8,12 @@ namespace PortfolioAplication.Models
 {
     public class WorkContext:DbContext
     {
-       
+        public DbSet<Photo> Photos { get; set; }
         public DbSet<Work> Works { get; set; }
+        
         public WorkContext(DbContextOptions<WorkContext> options): base(options)
         {
+            
             Database.EnsureCreated();
         }
     }

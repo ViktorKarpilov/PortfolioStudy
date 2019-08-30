@@ -10,9 +10,13 @@
 
 @if (Model.Count() != 0)
 {
-    @foreach (Work work in Model)
-    {
-        @await Html.PartialAsync("_CardPartial", work);
-    }
-    
+    <div class="container, workBox" >
+        @foreach (Work work in Model)
+        {
+
+            @await Html.PartialAsync("_CardPartial", work);
+
+        }
+    </div>
 }
+

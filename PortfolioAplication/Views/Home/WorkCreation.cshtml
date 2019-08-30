@@ -1,0 +1,29 @@
+﻿@model PortfolioAplication.Models.Work
+@{
+    ViewBag.Title = "Adding work";
+}
+@{ 
+    Work page = new Work(2);
+}
+<form asp-action="WorkCreation" asp-controller="home" method="post">
+    <div class="form-group">
+        <label asp-for="Number" class="control-label">Number</label>
+        <input type="text" asp-for="Number" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Url" class="control-label">Url</label>
+        <input type="text" asp-for="Url" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Description</label>
+        <input type="number" asp-for="Description" class="form-control" />
+    </div>
+    <!--<div class="form-group">
+        <label asp-for="Description" class="control-label">Описание</label>
+        <input type="file"  class="form-control" />
+    </div>-->
+    @await Html.PartialAsync("_AddPhotoPartial", page.Galery);
+    <div class="form-group">
+        <input type="submit" value="Send" class="btn btn-default" />
+    </div>
+</form>

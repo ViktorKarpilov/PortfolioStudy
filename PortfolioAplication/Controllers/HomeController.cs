@@ -2,7 +2,8 @@
 using PortfolioAplication.Models;
 using System.Diagnostics;
 using System.Linq;
-
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace PortfolioAplication.Controllers
 {
@@ -11,26 +12,30 @@ namespace PortfolioAplication.Controllers
 
         private readonly WorkContext context;
 
-        public HomeController(WorkContext workContext)
+        public HomeController(WorkContext workContext,WorkContext context)
         {
+            this.context = context;
             context = workContext;
         }
-        [Route("[controller]/test")]
+        
         public IActionResult Index()
         {
-
-            return View(context.Works.ToList());
+            
+            return View(context.Works.Include(g => g.Galery).ToList());
         }
-
-        public IActionResult CreateWork()
+        [Route("/create")]
+        public IActionResult WorkCreation()
         {
-            return View();
+            return View(new Work(0));
         }
+
+
 
         public IActionResult Works()
         {
             return View(context.Works.ToList());
         }
+
         [HttpPost]
         public IActionResult PostWork(Work work)
         {
@@ -39,7 +44,9 @@ namespace PortfolioAplication.Controllers
             return RedirectToActionPermanent("Works");
         }
 
-        [Route("")]
+        
+
+
         public IActionResult Indext()
         {
             return View();
